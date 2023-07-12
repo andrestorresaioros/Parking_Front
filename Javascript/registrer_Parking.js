@@ -16,5 +16,8 @@ form.addEventListener('submit', (e) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     }).then((response)=>response.json())
-    .then((response)=> console.log(response))
+    .then((response)=> {
+        console.log(response)
+        alert("El parqueadero se a creado con exito en la zona: "+data.zone)
+    })
 });
