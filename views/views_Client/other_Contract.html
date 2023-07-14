@@ -15,24 +15,24 @@
 <body>
     <div class="container">
         <h1 class="text-center">Bienvenido</h1>
-        <form>
+        <form id="form_Contract">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nombrePropietario">Ingrese nombre del propietario:</label>
-                        <input type="text" class="form-control" id="nombrePropietario">
+                        <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
                         <label for="idPropietario">Ingrese ID del propietario:</label>
-                        <input type="text" class="form-control" id="idPropietario">
+                        <input type="text" class="form-control" name="identification">
                     </div>
                     <div class="form-group">
                         <label for="telefonoPropietario">Ingrese teléfono del propietario:</label>
-                        <input type="text" class="form-control" id="telefonoPropietario">
+                        <input type="text" class="form-control" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="periodoContrato">Escoja el periodo de su contrato:</label>
-                        <select class="form-select" id="periodoContrato">
+                        <select class="form-select" name="type_Contract"id="periodoContrato">
                             <option value="dia">Día</option>
                             <option value="semana">Semana</option>
                             <option value="mes">Mes</option>
@@ -43,19 +43,23 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="placa">Ingrese el color de su vehículo:</label>
-                        <input type="text" class="form-control" id="color">
+                        <input type="text" class="form-control" name="color">
                     </div>
                     <div class="form-group">
                         <label for="placa">Ingrese la placa de su vehículo:</label>
-                        <input type="text" class="form-control" id="placa">
+                        <input type="text" class="form-control" name="plate">
                     </div>
                     <div class="form-group">
                         <label for="marca">Ingrese la marca de su vehículo:</label>
-                        <input type="text" class="form-control" id="marca">
+                        <input type="text" class="form-control" name="brand">
                     </div>
                     <div class="form-group">
                         <label for="modelo">Ingrese el modelo de su vehículo:</label>
-                        <input type="text" class="form-control" id="modelo">
+                        <input type="text" class="form-control" name="model">
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Ingrese el tipo de su vehículo:</label>
+                        <input type="text" class="form-control" name="type">
                     </div>
                 </div>
             </div>
@@ -66,6 +70,7 @@
             </div>
         </form>
     </div>
+    <script src="/Javascript/other_Contract.js"></script>
 </body>
 
 </html>
