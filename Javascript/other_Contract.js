@@ -1,3 +1,30 @@
+function fillSelectContract() {
+    let select = document.getElementById('selectContractType');
+
+    let contractTypes = ['Día', 'Semana', 'Mes', 'Año'];
+
+    contractTypes.forEach(type => {
+        let optionElement = document.createElement('option');
+        optionElement.value = type;
+        optionElement.text = type;
+        select.appendChild(optionElement);
+    });
+}
+fillSelectContract();
+
+function fillSelectVehicle() {
+    let select = document.getElementById('selectVechiclesType');
+
+    let vehiclesTypes = ['Automóvil', 'Motocicleta', 'Vehículos Pesados'];
+
+    vehiclesTypes.forEach(type => {
+        let optionElement = document.createElement('option');
+        optionElement.value = type;
+        optionElement.text = type;
+        select.appendChild(optionElement);
+    });
+}
+fillSelectVehicle();
 let form = document.getElementById('form_Contract');
 form.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -9,7 +36,7 @@ form.addEventListener('submit', async (e) => {
         plate: form_data.get('plate'),
         brand: form_data.get('brand'),
         model: form_data.get('model'),
-        type: form_data.get('type')
+        type: form_data.get('selectVechiclesType')
     }
     let data_Client = {
         name: form_data.get('name'),
@@ -18,7 +45,7 @@ form.addEventListener('submit', async (e) => {
     }
     let data_Contract = {
         id_Admin: 1,
-        type: form_data.get('type_Contract'),
+        type: form_data.get('selectContractType'),
     }
     let new_User = await fetch("http://localhost:4200/Clients/Manage/", {
         method: 'POST',

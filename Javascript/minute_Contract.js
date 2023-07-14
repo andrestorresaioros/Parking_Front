@@ -1,3 +1,16 @@
+function fillSelectVehicle() {
+    let select = document.getElementById('selectVechiclesType');
+
+    let vehiclesTypes = ['Automóvil', 'Motocicleta', 'Vehículos Pesados'];
+
+    vehiclesTypes.forEach(type => {
+        let optionElement = document.createElement('option');
+        optionElement.value = type;
+        optionElement.text = type;
+        select.appendChild(optionElement);
+    });
+}
+fillSelectVehicle();
 let form = document.getElementById('form_Contract_Minute');
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -9,7 +22,7 @@ form.addEventListener('submit', (e) => {
         plate: form_data.get('plate'),
         brand: '---',
         model: '---',
-        type: form_data.get('type')
+        type: form_data.get('selectVechiclesType')
     }
     let data_Client = {
         name: 'USER',
