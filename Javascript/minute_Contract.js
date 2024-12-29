@@ -12,7 +12,7 @@ function fillSelectVehicle() {
 }
 
 fillSelectVehicle();
-
+let exit = document.getElementById('exit_Button');
 let form = document.getElementById('form_Contract_Minute');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ form.addEventListener('submit', async (e) => {
         type: 'Minuto',
     };
 
-    await fetch("http://localhost:4200/Clients/Contract/", {
+    let new_Contract = await fetch("http://localhost:4200/Clients/Contract/", {
         method: 'POST',
         type: 'json',
         headers: { 'Content-Type': 'application/json' },
@@ -72,17 +72,46 @@ form.addEventListener('submit', async (e) => {
 
     let data_Receipt = {
         id_Client: new_User.id,
+        type_Contract: new_Contract.type,
         id_Vehicle: new_Vehicle.id,
-        date_entry: new Date()
+        date_entry: new Date().toISOString(),
+
     };
     console.log(data_Receipt);
-    fetch("http://localhost:4200/Clients/Receipt/", {
+    await fetch("http://localhost:4200/Clients/Receipt/", {
         method: 'POST',
         type: 'json',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data_Receipt)
     }).then((response) => response.json())
         .then((response) => {
-            console.log(response);
+            if (!response.ok) {
+                throw new Error("No hay mas cupos")
+            } else {
+                console.log(response)
+            }
+        }).catch((error) => {
+            alert(error)
         });
+
+
 });
+exit.addEventListener("click", () => {
+    let form_data = new FormData(form);
+    let plate = form_data.get("plate")
+    let data_Exit = {
+        id_Vehicle: plate,
+        date_exit: new Date().toISOString()
+    };
+    console.log(data_Exit);/*
+        fetch("http://localhost:4200/Clients/Receipt/", {
+            method: 'POST',
+            type: 'json',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data_Exit)
+        }).then((response) => response.json())
+            .then((response) => {
+                console.log(response);
+            });
+            */
+})

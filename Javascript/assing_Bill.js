@@ -37,5 +37,6 @@ form.addEventListener('submit', (e) => {
         body: JSON.stringify(data)
     }).then((response) => response.json())
         .then((response) => console.log(response))
+        alert("La tarifa se asigno correctamente")
     });
 

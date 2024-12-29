@@ -97,5 +97,24 @@ form.addEventListener('submit', async (e) => {
             
             //alert("El parqueadero se a creado con exito en la zona: "+data.brand)
         })
+    let data_Receipt = {    
+        id_Client: new_User.id,
+        type_Contract: new_Contract.type,
+        id_Vehicle: new_Vehicle.id,
+        date_entry: new Date().toISOString(),
+        date_exit: new Date().toISOString()
+    };
+    console.log(data_Receipt);
+    await fetch("http://localhost:4200/Clients/Receipt/", {
+        method: 'POST',
+        type: 'json',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data_Receipt)
+    }).then((response) => response.json())
+        .then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);   
+        });
         
 });

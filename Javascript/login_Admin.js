@@ -1,19 +1,15 @@
-let form = document.getElementById('form_Parking');
+let form = document.getElementById('form_Login');
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     console.log("enviando")
     let form_data = new FormData(form)
     let data= {
-        id_Admin: 1,
-        zone: form_data.get('Zone'),
-        quantity_space_moto: form_data.get('motos'),
-        quantity_space_car: form_data.get('heavy'),
-        quantity_space_heavy: form_data.get('autos'),
-        username: "",
-        email: "",
-        password: ""
+        username: form_data.get('user'),
+        //email: "",
+        password: form_data.get('password')
     }
-    fetch("http://localhost:4200/Parkings/View-Parkings/",{
+    console.log(data)
+  /*   fetch("http://localhost:4200/api/auth/login/",{
         method: 'POST',
         type:'json',
         headers: {'Content-Type': 'application/json'},
@@ -21,6 +17,7 @@ form.addEventListener('submit', (e) => {
     }).then((response)=>response.json())
     .then((response)=> {
         console.log(response)
-        alert("El parqueadero se a creado con exito en la zona: "+data.zone)
+      //  alert("El parqueadero se a creado con exito en la zona: "+data.zone)
     })
+    */
 });
